@@ -12,9 +12,9 @@
                         <div>
                             {{ QrCode::size(300)->generate($qrCodeUrl) }}
                         </div>
-                        <p>You must set up your Google Authenticator app before continuing. You will be unable to login otherwise</p>
+                        <p>You must set up your Google Authenticator app before continuing.</p>
                         <div>
-                            <a href="/complete-registration"><button class="btn-primary">Complete Registration</button></a>
+                            <a href="{{route('complete-activation')}}"><button class="btn-primary">Enable Two-Factor Authentication</button></a>
                         </div>
                     </div>
                 </div>
