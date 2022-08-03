@@ -13,9 +13,21 @@
                             {{ QrCode::size(300)->generate($qrCodeUrl) }}
                         </div>
                         <p>You must set up your Google Authenticator app before continuing.</p>
-                        <div>
-                            <a href="{{route('complete-activation')}}"><button class="btn-primary">Enable Two-Factor Authentication</button></a>
-                        </div>
+
+                        <form action="{{route('complete-activation')}}" method="post">
+                            Type your code: <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <div class="form-group {{ $errors->has('code') ? 'has-error' : '' }}">
+                                <input type="text" id="code" name="code" class="form-control" placeholder="Enter code" value="{{ old('code') }}">
+                                <span class="text-danger">{{ $errors->first('code') }}</span>
+                            </div>
+                            <input type="submit" value="check">
+                        </form>
+
+{{--                        @if ($valid)--}}
+{{--                            <div style="color: green; font-weight: 800;">VALID</div>--}}
+{{--                        @else--}}
+{{--                            <div style="color: red; font-weight: 800;">INVALID</div>--}}
+{{--                        @endif--}}
                     </div>
                 </div>
             </div>

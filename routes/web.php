@@ -22,7 +22,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/add-2fa', [App\Http\Controllers\Auth\Add2FaController::class, 'add2Fa'])->name('add2Fa');
-Route::get('/complete-activation', [App\Http\Controllers\Auth\Add2FaController::class, 'confirm2FaActivation'])->name('complete-activation');
+Route::post('/complete-activation', [App\Http\Controllers\Auth\Add2FaController::class, 'confirm2FaActivation'])->name('complete-activation');
 
 Route::get('/need-2fa-route', function () {
     return view('need2fa');
